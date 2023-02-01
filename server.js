@@ -10,7 +10,9 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  // WHEN I am idle on the site for more than a set time
+  cookie: {maxAge:360000},
+  // 6 min?
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({

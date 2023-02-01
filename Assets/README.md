@@ -1,3 +1,6 @@
+TO-DO:
+Start from the backend and work toward the front. 
+
 # 14 Model-View-Controller (MVC): Tech Blog
 
 ## Your Task
