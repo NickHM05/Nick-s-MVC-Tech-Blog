@@ -1,9 +1,14 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const authorHere = require("../../utils/auth");
 
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.create({
+      name: req.body.name,
+      password: req.body.password
+    });
+    console.log(userData)
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -12,6 +17,7 @@ router.post('/', async (req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });
@@ -23,7 +29,7 @@ router.post('/login', async (req, res) => {
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect email/username, please try again' });
       return;
     }
 
@@ -32,7 +38,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect password, please try again' });
       return;
     }
 
@@ -40,7 +46,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
-      res.json({ user: userData, message: 'You are now logged in!' });
+      res.json({ user: userData, message: 'You are logged in!' });
     });
 
   } catch (err) {
