@@ -7,13 +7,13 @@ const authorHere = require('../../utils/auth');
 router.post('/', async (req, res) => {
     console.log("comment created.")
     try {
-        const oneComment = await Comment.create({
+        const newComment = await Comment.create({
             ...req.body,
             user_id: req.session.user_id,
         });
 
-        console.log(oneComment)
-        res.status(200).json(oneComment);
+        console.log(newComment)
+        res.status(200).json(newComment);
     } catch (err) {
         res.status(400).json(err);
     }

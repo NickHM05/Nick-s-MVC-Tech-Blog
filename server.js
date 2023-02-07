@@ -1,27 +1,29 @@
-const path = require('path');
+// const path = require('path');
+// require express for running as the service
 const express = require('express');
 const session = require('express-session');
-const exphbs = require('express-handlebars');
+// offload the routes to controllers directory reference
 const routes = require('./controllers');
-const helpers = require('./utils/helpers');
+// include handlebars for templating here
+const exphbs = require('express-handlebars');
+// include handlebars for templating and here
+const helpers = require('./utils/handlebarshelpers');
 
+//init session state here
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const path = require("path");
 
 const app = express();
+// setting up the port for local site or heroku.
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
-const hbs = exphbs.create({ helpers });
+// const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: 'Super secret secret',
-  cookie: {
-    maxAge: 300000,
-    httpOnly: true,
-    secure: false,
-    sameSite: 'strict',
-  },
+  secret: 'Super-secret-secret',
+  cookie: {maxAge: 300000 },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -32,6 +34,7 @@ const sess = {
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
+const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
