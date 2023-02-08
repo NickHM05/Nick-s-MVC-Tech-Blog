@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3001;
 // const hbs = exphbs.create({ helpers });
 // below is the session object
 const sess = {
-  secret: 'Super-secret-secret',
+  secret: '15-mvc-secret',
   cookie: { maxAge: 1000000},
   resave: false,
   saveUninitialized: true,
