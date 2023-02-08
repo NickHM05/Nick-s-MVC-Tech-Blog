@@ -1,10 +1,10 @@
 // Get all the posts for a specific post from line 3
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post } = require('../../models/index');
 const authorHere = require("../../utils/auth");
 
 // let's render the post page
-router.get("/", async(req, res) => {
+router.post("/", async(req, res) => {
     try {
         const newPost = await Post.create({
             ...req.body,

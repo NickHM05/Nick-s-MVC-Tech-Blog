@@ -15,7 +15,8 @@ router.get("/", async (req, res) => {
             }]
         });
         const posts = postData.map((post) => post.get({ plain: true }));
-        res.render("dashboard", { posts, loggedIn: req.session.loggedIn });
+        console.log(posts)
+        res.render('newpost', {layout:"main", posts, loggedIn: req.session.loggedIn });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -85,6 +86,7 @@ router.get("/post/:id",authorHere, async (req, res) => {
         });
         if (postData) {
             const post = postData.get({ plain: true });
+            console.log(post)
             res.render("editpost", { post, newPost: false, loggedIn: req.session.loggedIn });
         } else {
             res.status(404).json({ message: "No post found with this id" });
