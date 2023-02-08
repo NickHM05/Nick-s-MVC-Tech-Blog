@@ -42,7 +42,8 @@ app.set('view engine', 'handlebars');
 
 // enabling the POST to handle in express.
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// used to be true
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
