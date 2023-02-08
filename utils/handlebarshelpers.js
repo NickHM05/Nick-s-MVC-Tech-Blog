@@ -7,6 +7,6 @@ module.exports = {
     return date.toLocaleDateString();
   },
   format_datetime: (date) => {
-    return date.toLocaleTimeString() + " on " + date.toLocaleDateString();
+    return date.toLocaleTimeString() +" on "+ date.toLocaleDateString();
   }
 };

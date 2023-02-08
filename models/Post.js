@@ -1,4 +1,3 @@
-//Post will belong to the user. 
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 

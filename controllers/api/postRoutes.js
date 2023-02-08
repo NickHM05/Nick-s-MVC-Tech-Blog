@@ -70,19 +70,19 @@ router.get("/", async(req, res) => {
 //     }
 //   });
 
-// Next we need to create a post
-router.post('/', async (req, res) => {
-    try {
-        const newPost = await Post.create({
-            ...req.body,
-            user_id: req.session.user_id,
-        });
+// // Next we need to create a post
+// router.post('/', async (req, res) => {
+//     try {
+//         const newPost = await Post.create({
+//             ...req.body,
+//             user_id: req.session.user_id,
+//         });
 
-        res.status(200).json(newPost);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
+//         res.status(200).json(newPost);
+//     } catch (err) {
+//         res.status(400).json(err);
+//     }
+// });
 
 // Updating the post
 
@@ -96,7 +96,7 @@ router.delete('/:id', authorHere, async (req, res) => {
             },
         });
 
-        if(!postData) {
+        if(postData) {
             res.status(200).json(postData);
         } else {
             res.status(404).json({ message: "post " + req.params.id + 'There is no post with this id in the database.'});

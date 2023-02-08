@@ -1,4 +1,3 @@
-//Will handle creating the comment. 
 const commentTextEl = document.querySelector("#comment");
 
 postCommentHandler = async (event) => {

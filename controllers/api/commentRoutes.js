@@ -5,7 +5,7 @@ const authorHere = require('../../utils/auth');
 
 // Next we need to create a comment
 router.post('/', async (req, res) => {
-    console.log("comment created.")
+    console.log("comment created")
     try {
         const newComment = await Comment.create({
             ...req.body,

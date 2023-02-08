@@ -10,6 +10,7 @@ router.get('/login', (req, res) => {
         res.render("login");
     }
 });
+
 // Get all posts
 router.get("/", async (req, res) => {
     console.log("all posts from get recieved")
