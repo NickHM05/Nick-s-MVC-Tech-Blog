@@ -16,8 +16,8 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const path = require("path");
 
 const app = express();
-// setting up the port for local site or heroku. 3001
-const PORT = process.env.PORT || 3306;
+// setting up the port for local site or heroku.
+const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
 // const hbs = exphbs.create({ helpers });
