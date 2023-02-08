@@ -9,8 +9,9 @@ const exphbs = require('express-handlebars');
 // include handlebars for templating and here
 const helpers = require('./utils/handlebarshelpers');
 
-//init session state here
+//here is the db section for the orm.
 const sequelize = require('./config/connection');
+//init session state here
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const path = require("path");
 
@@ -20,10 +21,10 @@ const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
 // const hbs = exphbs.create({ helpers });
-
+// below is the session object
 const sess = {
   secret: 'Super-secret-secret',
-  cookie: {},
+  cookie: { maxAge: 1000000},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -31,6 +32,7 @@ const sess = {
   })
 };
 
+// lead express to the session object
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
@@ -38,12 +40,13 @@ const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+// enabling the POST to handle in express.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-
+// syncing the orm to the database
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });

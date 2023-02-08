@@ -13,7 +13,7 @@ postCommentHandler = async (event) => {
         if (response.ok) {
             document.location.reload();
         } else {
-            alert("Comment could not be saved to the post");
+            alert("Your comment could not be saved to the post");
         }
     }
 }
