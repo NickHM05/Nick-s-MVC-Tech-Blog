@@ -13,7 +13,7 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'localhost',
       dialect: 'mysql',
-      port: `https://sheltered-atoll-65514.herokuapp.com/`
+      port: 3306
     }
   );
 }
