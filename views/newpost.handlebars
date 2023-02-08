@@ -1,4 +1,4 @@
-<div class="col-12 p-4">
+{{!-- <div class="col-12 p-4">
     <h4>Title</h4>
     <textarea class="w-100 mb-1" name="title" id="title" cols="1" rows="1">{{post.title}}</textarea>
     <h4>Post</h4>
@@ -9,4 +9,23 @@
     </div>
 </div>
 <script src="../js/post.js"></script>
-<script src="../../js/post.js"></script>
+<script src="../../js/post.js"></script> --}}
+{{#if posts.length}}
+    {{#each posts as |post|}}
+    <div class="card col-11 m-4 p-1">
+        <div class="card-title d-flex justify-content-between p-2 h4">
+            <p class="h2 text-dark">{{post.title}}</p>
+            <a href="/dashboard/post/{{id}}"><button>edit</button></a>
+        </div>
+        <div class="card-body">{{content}}</div>
+    </div>
+    {{/each}}
+{{else}}
+    <div class="card col-11 m-4 p-1">
+        <div class="card-title d-flex justify-content-between p-2 h4">
+            <p class="h2 text-dark">There are no posts</p>
+        </div>
+        <div class="card-body"></div>
+    </div>
+
+{{/if}}

@@ -4,6 +4,13 @@ const { Post } = require('../../models/index');
 const authorHere = require("../../utils/auth");
 
 // let's render the post page
+//render post page
+router.get("/", async (req, res) => {
+    const post = { name: "", content: "" }
+    res.render("editpost", { post, newPost: true, loggedIn: req.session.loggedIn });
+  });
+
+// Creating the post page
 router.post("/", async(req, res) => {
     try {
         const newPost = await Post.create({
