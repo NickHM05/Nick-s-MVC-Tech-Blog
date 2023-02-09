@@ -22,9 +22,11 @@ const PORT = process.env.PORT || 3001;
 // Set up Handlebars.js engine with custom helpers
 // const hbs = exphbs.create({ helpers });
 // below is the session object
+// 300,000 is 5 minutes
+// 900,000 is 15 minutes
 const sess = {
   secret: '15-mvc-secret',
-  cookie: { maxAge: 1000000},
+  cookie: { maxAge: 900000},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
