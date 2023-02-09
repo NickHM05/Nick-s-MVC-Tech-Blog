@@ -17,6 +17,10 @@ Needs an env username and password to your local machine. It needs bcrypt, seque
 ## Usage
 Steps were explained toward the end of installation. 
 - ![Heroku link] (https://sheltered-atoll-65514.herokuapp.com/) 
+- ![Screenshot of the Tech blog create post part](./screenshots/Screenshot%20(272).png)
+- ![Screenshot of the Tech blog posts made/Home](./screenshots/Screenshot%20(273).png)
+- ![Screenshot of the Tech blog login and sign up page](./screenshots/Screenshot%20(274).png)
+- ![Screenshot of the Tech Blog commenting part](./screenshots/Screenshot%20(275).png)
 ## License 
   This application is licensed under [MIT](https://opensource.org/licenses/MIT) license. Click the link for license rights and limitations.
 ## Badges
